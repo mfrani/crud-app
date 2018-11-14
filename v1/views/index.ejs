@@ -1,0 +1,41 @@
+<% include partials/header %>
+
+<div class="container">
+  <h1>Product List</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+        
+        <% products.forEach(function(product){ %>
+      <tr>
+        <td><%= product.name %></td> 
+        <td><%= product.price %></td>
+        <td><%= product.id %></td>
+        <td>
+                <button type="button" class="btn btn-primary">Edit</button></td>
+        <td>
+            <form method="post" action="/products/<%= product.id %>/delete?_method=DELETE">
+                <button type="button" class="btn btn-danger">Delete</button>
+            </form>
+        </td>
+      </tr>
+        <% }); %>
+    </tbody>
+  </table>
+  
+  <form>
+    <a href="/products/form">create new</a>
+</form>
+</div>
+<h1><%= products[0].id %></h1>
+
+<form action="/products/5bdbe09df908cd05cfcc89d5/delete" method="post">
+                <button type="button" class="btn btn-danger">Delete</button>
+            </form>
+
+<% include partials/footer %>

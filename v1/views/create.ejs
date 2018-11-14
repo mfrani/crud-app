@@ -1,0 +1,14 @@
+<% include partials/header %>
+
+<div class="container">
+    <h1>Create new product</h1>
+
+<form action ='/products/create' method="post">
+    Product Name: <input type="text" name="name"/><br>
+    Product Price: <input type="text" name="price"/><br>
+    <input type="submit" value="accept"/><br>
+</form>
+<a href="/products/">Go back</a>
+</div>
+
+<% include partials/footer %>
