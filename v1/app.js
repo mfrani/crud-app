@@ -20,7 +20,17 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(methodOverride('_method'));
 app.use('/products', product);
 
-app.use(methodOverride(function(req, res){ // ALSO look in the body
+
+
+var methodOverride = require('method-override')
+ 
+/**
+ * using custom logic to override method
+ * 
+ * there are other ways of overriding as well
+ * like using header & using query value
+ */ 
+app.use(methodOverride(function (req, res) {
   if (req.body && typeof req.body === 'object' && '_method' in req.body) {
     // look in urlencoded POST bodies and delete it
     var method = req.body._method
@@ -28,6 +38,8 @@ app.use(methodOverride(function(req, res){ // ALSO look in the body
     return method
   }
 }));
+
+
 
 
 let port = 8080;

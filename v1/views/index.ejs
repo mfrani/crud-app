@@ -15,13 +15,14 @@
       <tr>
         <td><%= product.name %></td> 
         <td><%= product.price %></td>
-        <td><%= product.id %></td>
+        <td><%= product._id %></td>
         <td>
-                <button type="button" class="btn btn-primary">Edit</button></td>
+                <button id="update" type="button" class="btn btn-primary">Update</button></td>
         <td>
-            <form method="post" action="/products/<%= product.id %>/delete?_method=DELETE">
-                <button type="button" class="btn btn-danger">Delete</button>
-            </form>
+            <form method="post" action="/products/<%= product._id %>/delete">
+                        <input type="hidden" name="_method" value="delete" />
+                        <input type="submit" class="btn btn-danger" value='Delete' onClick="return confirm('Are you sure you want to delete?')" />
+                    </form>
         </td>
       </tr>
         <% }); %>
